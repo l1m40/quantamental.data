@@ -3,7 +3,7 @@
 #' @return tibble
 #' @export
 read_asset_metadata <- function() {
-  root <- get_data_root()
+  root <- get_data_root_path()
   meta_dir <- file.path(root, "metadata")
 
   files <- list.files(meta_dir, pattern = "\\.json$", full.names = TRUE)

@@ -11,11 +11,20 @@ devtools::document()
 
 if(F){
 
+  library(quantamental.data)
+
   head(get_b3_index()$IBOV)
 
   test_external_dal()
 
-  # devtools::install("quantamental.data")
+
+
+
+  Sys.unsetenv("DURIN_DATA")
+  get_data_root_path()
+
+  Sys.setenv(DURIN_DATA = "/tmp/nonexistent")
+  head(get_b3_index()$IBOV) # this will go to error
 
 
 }

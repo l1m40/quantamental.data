@@ -3,7 +3,6 @@
 export(get_b3_index)
 export(get_data_mart_path)
 export(get_data_output_path)
-export(get_data_root)
 export(get_data_root_path)
 export(get_ontology)
 export(has_data)

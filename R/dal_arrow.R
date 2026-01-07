@@ -6,7 +6,7 @@
 #' @return tibble
 #' @export
 read_asset_parquet <- function(asset_input, years = NULL, cols = NULL) {
-  root <- get_data_root()
+  root <- get_data_root_path()
 
   ds <- arrow::open_dataset(root)
 

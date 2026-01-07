@@ -6,21 +6,26 @@
 #'
 #' @return character path
 #' @export
-get_data_root <- function() {
-  root <- Sys.getenv("DURIN_DATA", "")
-  if (nzchar(root)) {
+get_data_root_path <- function() {
+  # root <- Sys.getenv("DURIN_DATA", "")
+  # if (nzchar(root)) {
+  #   return(normalizePath(root, mustWork = TRUE))
+  # }
+  #
+  # system.file("extdata", package = "quantamental.data")
+
+  root <- Sys.getenv("DURIN_DATA", unset = NA_character_)
+
+  if (!is.na(root) && nzchar(root)) {
+    if (!dir.exists(root)) {
+      stop("Environment variable is set but does not exist: ",root)
+    }
     return(normalizePath(root, mustWork = TRUE))
   }
 
   system.file("extdata", package = "quantamental.data")
 }
 
-
-#' Root data path
-#'
-#' @return character path
-#' @export
-get_data_root_path <- function() { x <- Sys.getenv("DURIN_DATA") ; replace(x, x == "", "data") }
 
 #' Data marts path
 #'

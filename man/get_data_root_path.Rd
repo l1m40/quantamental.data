@@ -2,7 +2,7 @@
 % Please edit documentation in R/dal_config.R
 \name{get_data_root_path}
 \alias{get_data_root_path}
-\title{Root data path}
+\title{Resolve quantamental data root}
 \usage{
 get_data_root_path()
 }
@@ -10,5 +10,9 @@ get_data_root_path()
 character path
 }
 \description{
-Root data path
+Priority:
+\enumerate{
+\item DATA_ROOT environment variable
+\item Package snapshot in inst/extdata
+}
 }
