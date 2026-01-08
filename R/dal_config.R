@@ -1,3 +1,16 @@
+
+
+
+
+
+
+
+
+
+
+
+get_data_snapshot_path <- function() { system.file("extdata", package = "quantamental.data") }
+get_data_snapshot_check <- function() { if(get_data_root_path()==get_data_snapshot_path()) warning("Using a package data snapshot as ROOT_DATA_PATH") }
 #' Resolve quantamental data root
 #'
 #' Priority:
@@ -7,26 +20,18 @@
 #' @return character path
 #' @export
 get_data_root_path <- function() {
-  # root <- Sys.getenv("DURIN_DATA", "")
-  # if (nzchar(root)) {
-  #   return(normalizePath(root, mustWork = TRUE))
-  # }
-  #
-  # system.file("extdata", package = "quantamental.data")
-
   root <- Sys.getenv("DURIN_DATA", unset = NA_character_)
-
   if (!is.na(root) && nzchar(root)) {
     if (!dir.exists(root)) {
       stop("Environment variable is set but does not exist: ",root)
     }
     return(normalizePath(root, mustWork = TRUE))
   }
-
-  system.file("extdata", package = "quantamental.data")
+  # return the snapshot data lake
+  get_data_snapshot_path()
 }
 
-
+# utils::packageVersion("quantamental.data")
 #' Data marts path
 #'
 #' @return character path

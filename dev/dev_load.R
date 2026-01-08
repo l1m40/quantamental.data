@@ -11,9 +11,12 @@ devtools::document()
 
 if(F){
 
-  library(quantamental.data)
+  # library(quantamental.data)
+  get_data_snapshot_check()
 
   head(get_b3_index()$IBOV)
+
+  head(read_asset_fundamentals("VALE3"))
 
   test_external_dal()
 
