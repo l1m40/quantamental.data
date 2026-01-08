@@ -35,4 +35,33 @@ test_external_dal <- function() { "OK" }
 
 
 
+fundamentals_mart_path <- function() { file.path(get_data_mart_path(),"fundamentals.rds") }
+#' Read asset fundamentals
+#'
+#' @param asset_input Ticker
+# @param start_date,end_date Date boundaries (optional)
+# @param frequency "annual" | "quarterly"
+#'
+#' @return A tibble with flat, tabular fundamentals
+#' @export
+read_asset_fundamentals <- function(
+    asset_input
+    # start_date = NULL,
+    # end_date = NULL,
+    # frequency = c("annual", "quarterly")
+) {
+  # frequency <- match.arg(frequency)
+
+  # 1. Resolve data root (external lake → snapshot)
+  # 2. Read Parquet partitions with arrow
+  # 3. Filter early (pushdown)
+  # 4. Return a flat tibble
+
+  path=fundamentals_mart_path()
+  return(readRDS(path) |> dplyr::filter(Company==asset_input))
+}
+
+
+
+
 
