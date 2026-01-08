@@ -10,7 +10,12 @@
 
 
 get_data_snapshot_path <- function() { system.file("extdata", package = "quantamental.data") }
-get_data_snapshot_check <- function() { if(get_data_root_path()==get_data_snapshot_path()) warning("Using a package data snapshot as ROOT_DATA_PATH") }
+get_data_snapshot_check <- function() {
+  if(get_data_root_path()==get_data_snapshot_path())
+    warning("Using a package data snapshot as ROOT_DATA_PATH")
+  else
+    message("Using environment variable DURIN_DATA to reach the data lake")
+}
 #' Resolve quantamental data root
 #'
 #' Priority:

@@ -16,7 +16,7 @@ if(F){
 
   head(get_b3_index()$IBOV)
 
-  head(read_asset_fundamentals("VALE3"))
+  head(read_asset_fundamentals("petr4"))
 
   test_external_dal()
 

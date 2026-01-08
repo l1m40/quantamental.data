@@ -58,7 +58,7 @@ read_asset_fundamentals <- function(
   # 4. Return a flat tibble
 
   path=fundamentals_mart_path()
-  return(readRDS(path) |> dplyr::filter(Company==asset_input))
+  return(readRDS(path) |> dplyr::filter(Company==toupper(asset_input)))
 }
 
 
