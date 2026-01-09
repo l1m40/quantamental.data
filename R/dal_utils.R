@@ -30,10 +30,11 @@ has_data <- function() {
 #' @export
 snapshot_check <- function() {
   if(get_data_root_path()==get_data_snapshot_path()) {
-    warning("Using a package data snapshot as DATA_ROOT_PATH")
+    if(!exists("snapshot_check_messages")) warning("Using a package data snapshot as DATA_ROOT_PATH")
     return(TRUE)
   }
   else
-    message("Using environment variable DURIN_DATA to reach the data lake")
+    if(!exists("snapshot_check_messages")) message("Using environment variable DURIN_DATA to reach the data lake")
+  assign("snapshot_check_messages",FALSE,envir=.GlobalEnv)
   return(FALSE)
 }
