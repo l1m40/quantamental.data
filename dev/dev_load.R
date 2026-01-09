@@ -12,20 +12,20 @@ devtools::document()
 if(F){
 
   # library(quantamental.data)
-  get_data_snapshot_check()
+  snapshot_check()
 
-  head(get_b3_index()$IBOV)
+  head(read_b3_index()$IBOV)
 
   head(read_asset_fundamentals("petr4"))
 
-  test_external_dal()
 
 
 
 
-  Sys.unsetenv("DURIN_DATA")
+  # Sys.unsetenv("DURIN_DATA")
   get_data_root_path()
 
+  # test to error
   Sys.setenv(DURIN_DATA = "/tmp/nonexistent")
   head(get_b3_index()$IBOV) # this will go to error
 

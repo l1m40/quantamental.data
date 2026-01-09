@@ -1,4 +1,13 @@
-
+# ────────────────────────────────────────────────
+# R/dal_config.R
+# Description: Root resolution configurations
+# ────────────────────────────────────────────────
+#
+#
+#
+#
+#
+#
 
 
 
@@ -10,12 +19,6 @@
 
 
 get_data_snapshot_path <- function() { system.file("extdata", package = "quantamental.data") }
-get_data_snapshot_check <- function() {
-  if(get_data_root_path()==get_data_snapshot_path())
-    warning("Using a package data snapshot as ROOT_DATA_PATH")
-  else
-    message("Using environment variable DURIN_DATA to reach the data lake")
-}
 #' Resolve quantamental data root
 #'
 #' Priority:
@@ -36,17 +39,16 @@ get_data_root_path <- function() {
   get_data_snapshot_path()
 }
 
-# utils::packageVersion("quantamental.data")
 #' Data marts path
 #'
 #' @return character path
 #' @export
 get_data_mart_path <- function() { file.path(get_data_root_path(),"mart") }
 
-#' Output data path
+#' Dimensions data path
 #'
 #' @return character path
 #' @export
-get_data_output_path <- function() { file.path(get_data_root_path(),"output") }
+get_data_dimensions_path <- function() { file.path(get_data_root_path(),"dimensions") }
 
 

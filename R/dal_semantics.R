@@ -1,38 +1,33 @@
-#' Read asset metadata
-#'
-#' @return tibble
-#' @export
-read_asset_metadata <- function() {
-  root <- get_data_root_path()
-  meta_dir <- file.path(root, "metadata")
+# ────────────────────────────────────────────────
+# R/dal_semantics.R
+# Description: Semantic readers (public contract)
+# ────────────────────────────────────────────────
+#
+#
+#
+#
+#
+#
 
-  files <- list.files(meta_dir, pattern = "\\.json$", full.names = TRUE)
 
-  purrr::map_dfr(files, jsonlite::fromJSON, simplifyVector = TRUE)
-}
+
+
+
+
+
 
 
 #' Read b3 indexes
 #'
 #' @return list of tibble
 #' @export
-get_b3_index <- function() { jsonlite::read_json(file.path(get_data_output_path(),"b3_index.json"),simplifyDataFrame = TRUE) }
+read_b3_index <- function() { jsonlite::read_json(file.path(get_data_dimensions_path(),"b3_index.json"),simplifyDataFrame = TRUE) }
 
 #' Read asset ontology
 #'
 #' @return list of tibble
 #' @export
-get_ontology <- function() { jsonlite::read_json(file.path(get_data_output_path(),"ontology.json"),simplifyDataFrame = TRUE) }
-
-
-
-#' Read external dal
-#'
-#' @return string
-#' @export
-test_external_dal <- function() { "OK" }
-
-
+read_ontology <- function() { jsonlite::read_json(file.path(get_data_dimensions_path(),"ontology.json"),simplifyDataFrame = TRUE) }
 
 
 fundamentals_mart_path <- function() { file.path(get_data_mart_path(),"fundamentals.rds") }
@@ -62,6 +57,19 @@ read_asset_fundamentals <- function(
 }
 
 
+
+
+
+quantamentals_mart_path <- function() { NA }
+#' Read quantamentals
+#'
+#' @param asset_input Ticker
+#'
+#' @return A tibble with flat, tabular quantamentals variables
+#' @export
+read_quantamentals <- function(asset_input) {
+  return(NA)
+}
 
 
 
